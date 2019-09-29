@@ -1,0 +1,26 @@
+{
+  "name": "node-express-mysql-mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.2.0",
+    "jsonwebtoken": "^8.4.0",
+    "knex": "^0.16.3",
+    "md5": "^2.2.1",
+    "moment": "^2.24.0",
+    "multer": "^1.4.1",
+    "mysql": "^2.17.1"
+  }
+}
