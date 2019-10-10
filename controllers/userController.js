@@ -1,6 +1,6 @@
 var knex = require('../config/knex');
 var md5 = require('md5');
-var message = require('../utils/message')
+var message = require('../utils/message');
 
 module.exports.getUsers = async (req, res) => {
   try {
@@ -8,15 +8,15 @@ module.exports.getUsers = async (req, res) => {
     console.log("---", JSON.parse(JSON.stringify(data))[0]);
     return res.json({
       response: JSON.parse(JSON.stringify(data))[0]
-    })
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
-}
+};
 
 module.exports.login = async (req, res) => {
   try {
-    var data = await knex('user').where({email_id:req.body.email_id,password:md5(req.body.password),isActive:1}).select('id','email_id')
+    var data = await knex('user').where({email_id:req.body.email_id,password:md5(req.body.password),isActive:1}).select('id','email_id');
     console.log("data",data.length);
     if(data.length>0){
       return res.json({
@@ -30,9 +30,9 @@ module.exports.login = async (req, res) => {
     }
     
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
-}
+};
 
 module.exports.register = async (req, res) => {
   try {
@@ -56,11 +56,11 @@ module.exports.register = async (req, res) => {
   } catch (e) {
     console.log(e)
   }
-}
+};
 
 module.exports.forgotPassword = async (req,res) =>{
   try {
-    var userDetails = await knex('user').where({email_id:req.body.email_id,isActive:1})
+    var userDetails = await knex('user').where({email_id:req.body.email_id,isActive:1});
     if(userDetails.length>0){
       console.log("data",JSON.parse(JSON.stringify(userDetails)));
       return res.json({
@@ -72,13 +72,13 @@ module.exports.forgotPassword = async (req,res) =>{
       });
     }
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
-}
+};
 
 var checkUserExist = async (email_id) =>{
   try {
-    var data = await knex('user').where({email_id:email_id,isActive:1})
+    var data = await knex('user').where({email_id:email_id,isActive:1});
     console.log("data",data.length);
     if(data.length>0){
       return true;
@@ -86,6 +86,6 @@ var checkUserExist = async (email_id) =>{
       return false;
     }
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
-}
+};
