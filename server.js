@@ -6,6 +6,7 @@ const cors = require('cors');
 const multer = require('multer');
 const express  = require('express');
 const app  = express();
+const userController = require('./controllers/userController');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -15,6 +16,10 @@ app.use(multer().any());
 app.use(cors()); //enable cores
 
 require('./config/knex')(app);
+
+app.post('/login', userController.login);
+app.post('/register', userController.register);
+app.post('/forgot-password', userController.forgotPassword);
 
 var routes = require('./routes');
 app.use('/', routes);
